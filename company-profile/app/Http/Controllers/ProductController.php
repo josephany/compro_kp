@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('products.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class ProductController extends Controller
             'users_id' => auth()->id(),
         ]);
 
-        return redirect()->route('products.index')
+        return redirect()->route('admin.products.index')
             ->with('success', 'Product berhasil ditambahkan');
     }
 
@@ -69,7 +69,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('products.edit', compact('product'));
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -100,7 +100,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -115,6 +115,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 }
